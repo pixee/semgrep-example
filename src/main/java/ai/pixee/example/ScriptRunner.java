@@ -1,5 +1,6 @@
 package ai.pixee.example;
 
+import io.github.pixee.security.SystemCommand;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.attribute.PosixFilePermission;
@@ -15,7 +16,7 @@ public final class ScriptRunner {
         filePermissions.add(PosixFilePermission.OTHERS_WRITE);
         filePermissions.add(PosixFilePermission.OTHERS_EXECUTE);
         Files.setPosixFilePermissions(script,filePermissions);
-        Runtime.getRuntime().exec(script.toString());
+        SystemCommand.runCommand(Runtime.getRuntime(), script.toString());
     }
 
     public void updateNewScript(Path startupScript, Path shutdownScript) throws IOException {
