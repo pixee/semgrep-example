@@ -13,8 +13,8 @@ public final class ScriptRunner {
 
     public void create(Path script) throws IOException {
         final var filePermissions = new HashSet<PosixFilePermission>();
-        filePermissions.add(PosixFilePermission.OTHERS_WRITE);
-        filePermissions.add(PosixFilePermission.OTHERS_EXECUTE);
+        filePermissions.add(PosixFilePermission.GROUP_WRITE);
+        filePermissions.add(PosixFilePermission.GROUP_EXECUTE);
         Files.setPosixFilePermissions(script,filePermissions);
         SystemCommand.runCommand(Runtime.getRuntime(), script.toString());
     }
